@@ -58,7 +58,9 @@ public class Main {
 
 		}
 		int puntos = 0;
+		boolean i=true;
 		Path pathPronosticos = Paths.get(args[1]);
+		ArrayList<Participante> partpuntos=new ArrayList<Participante>();
 		List<String> lineasPronosticos = null;
 		try {
 			lineasPronosticos = Files.readAllLines(pathPronosticos);
@@ -67,15 +69,20 @@ public class Main {
 			e.printStackTrace();
 		}
 		salto = true;
-
+		String aux=null;
 		for (String lineaPronostico : lineasPronosticos) {
+			
 			if (salto) {
 				salto = false;
 			} else {
 				String[] campos = lineaPronostico.split(",");
 				Equipo equipo1 = new Equipo(campos[1]);
 				Equipo equipo2 = new Equipo(campos[5]);
-				Partido partido = null;
+				Partido partido= new Partido(null,null);
+				if(i) {
+					aux=campos[0];
+					i=false;
+				}
 				for (Partido partidoCol : partidos) {
 					if (partidoCol.getEquipo1().equivaleA(equipo1) && partidoCol.getEquipo2().equivaleA(equipo2)) {
 						partido = partidoCol;
@@ -99,12 +106,23 @@ public class Main {
 
 				}
 				Pronostico pronostico = new Pronostico(partido, equipo, resultado);
+				
+				if(!aux.equals(campos[0])) {
+					partpuntos.add(new Participante(aux,puntos));
+					aux=campos[0];
+					puntos=0;
+
+				}
 				puntos += pronostico.puntos();
 
 			}
 
 		}
-		System.out.println(puntos);
+		partpuntos.add(new Participante(aux,puntos));
+		for(Participante totalpart:partpuntos) {
+			System.out.println(totalpart.getPersona()+" "+totalpart.getPunto());
+		}
+
 
 	}
 }
