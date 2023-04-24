@@ -1,16 +1,21 @@
-package tpgrupo2;
+package tp_integrador;
 
 public class Partido {
+	private String fase;
 	private Ronda ronda;
 	private Equipo equipo1;
 	private Equipo equipo2;
 	private int golEquipo1;
 	private int golEquipo2;
 	
-	public Partido(Equipo equipo1, Equipo equipo2) {
+	public Partido(Equipo equipo1, Equipo equipo2,String fase) {
 		super();
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;
+		this.fase=fase;
+	}
+	public String getFase() {
+		return fase;
 	}
 	public Ronda getRonda() {
 		return ronda;
@@ -57,4 +62,5 @@ public class Partido {
 		}
 		return null;
 	}
+
 }

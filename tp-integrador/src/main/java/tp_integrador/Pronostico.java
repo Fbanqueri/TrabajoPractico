@@ -1,4 +1,4 @@
-package tpgrupo2;
+package tp_integrador;
 
 public class Pronostico {
 	private Participante persona;
@@ -33,10 +33,11 @@ public class Pronostico {
 		return resultado;
 	}
 
-	public int puntos() {
+	public int puntos(int sumpun) {
 		if (resultado.equals(partido.resultado(equipo))) {
-			return 1;
+			return sumpun;
 		} else
 			return 0;
 	}
+
 }
