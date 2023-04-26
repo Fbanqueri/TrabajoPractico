@@ -1,4 +1,4 @@
-package tpgrupo2;
+package tp_integrador;
 
 import java.util.ArrayList;
 

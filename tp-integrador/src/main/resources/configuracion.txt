@@ -1,0 +1,2 @@
+puerto,root,contrasena,puntos por ganar, por empate, por perder, extra por ronda, extra por fase
+3306,root,2001fede,1,2,3,5,10
